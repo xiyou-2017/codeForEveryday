@@ -1,4 +1,5 @@
 'use strict';
+
 let buildItem = (inputs) => {
     let allItems = loadAllItems();
     let cartItems = [];
