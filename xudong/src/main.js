@@ -17,12 +17,25 @@ let buildItem = (inputs) => {
     return cartItems;
 }
 
-let getsubtotal = (cartItems) => {
-    let subtotalItems=cartItems.map((cartItem)=>{
-        let saveCount=parseInt(cartItem.count/3);
-        let save=saveCount*cartItem.item.price;
-        let subtotal=(cartItem.count-saveCount)*cartItem.item.price;
-        return {cartItem,save,subtotal};
+let getSubtotal = (cartItems) => {
+    let subtotalItems = cartItems.map((cartItem) => {
+        let saveCount = parseInt(cartItem.count / 3);
+        let save = saveCount * cartItem.item.price;
+        let subtotal = (cartItem.count - saveCount) * cartItem.item.price;
+        return {cartItem, save, subtotal};
     });
     return subtotalItems;
+}
+
+let getTotal = (receiptItems) => {
+    let total = 0;
+    let allsave = 0;
+    for (let receiptItem of receiptItems) {
+        total += receiptItem.subtotal;
+        allsave += receiptItem.save;
+    }
+    let receipt = receiptItems.map((receiptItem) => {
+        return {receiptItem, total, allsave};
+    });
+    return receipt;
 }
