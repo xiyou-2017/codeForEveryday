@@ -17,7 +17,6 @@ let buildItem = (inputs) => {
     }
     return cartItems;
 }
-
 let getSubtotal = (cartItems) => {
     let subtotalItems = cartItems.map((cartItem) => {
         let saveCount = parseInt(cartItem.count / 3);
@@ -39,4 +38,18 @@ let getTotal = (receiptItems) => {
         return {receiptItem, total, allsave};
     });
     return receipt;
+}
+let getString = (receipt) => {
+    let receiptString = "***<没钱赚商店>收据***";
+    for (let itemArray of receipt) {
+        receiptString += '\n名称：' + itemArray.receiptItem.cartItem.item.name + '，数量：'
+            + itemArray.receiptItem.cartItem.count + itemArray.receiptItem.cartItem.item.unit + '，单价：'
+            + itemArray.receiptItem.cartItem.item.price.toFixed(2) + '(元)，小计：'
+            + itemArray.receiptItem.subtotal.toFixed(2) + '(元)';
+    }
+    receiptString += '\n----------------------' +
+        '\n总计：' + receipt[0].total.toFixed(2) + '(元)' +
+        '\n节省：' + receipt[0].allsave.toFixed(2) + '(元)' +
+        '\n**********************';
+    return receiptString;
 }
