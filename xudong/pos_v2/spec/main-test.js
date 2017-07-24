@@ -1,3 +1,41 @@
+'use strict'
+
+describe('entire', () => {
+
+    let inputs = [
+        'ITEM000000',
+        'ITEM000000',
+        'ITEM000000',
+        'ITEM000001',
+        'ITEM000001',
+        'ITEM000004-4'
+    ];
+    let currentDate = new Date(),
+        year = currentDate.getFullYear().toString(),
+        month = (currentDate.getMonth() + 1).toString(),
+        date = currentDate.getDate().toString(),
+        hour = currentDate.getHours().toString(),
+        minute = currentDate.getMinutes().toString(),
+        second = currentDate.getSeconds().toString(),
+        formattedDateString = year + '年' + month + '月' + date + '日 ' + hour + ':' + minute + ':' + second;
+    let testData = `
+***<没钱赚商店>收据***
+打印时间：${formattedDateString}
+名称：可口可乐，数量：3瓶，单价：3.00(元)，小计：6.00(元)
+名称：雪碧，数量：2瓶，单价：3.00(元)，小计：6.00(元)
+名称：电池，数量：4个，单价：2.00(元)，小计：6.00(元)
+----------------------
+总计：18.00(元)
+节省：5.00(元)
+**********************`.trim();
+
+    it('entire-test', () => {
+        spyOn(console, 'log');
+        printReceipt(inputs);
+        expect(console.log).toHaveBeenCalledWith(testData);
+    });
+});
+
 describe('unit', () => {
     describe('buildItem-test', () => {
         let inputs = [

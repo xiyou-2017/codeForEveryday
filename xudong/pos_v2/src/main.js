@@ -1,4 +1,13 @@
 'use strict'
+
+let printReceipt=(inputs)=>{
+    let cartItems=buildItem(inputs);
+    let receiptItems=getSubtotal(cartItems);
+    let receipt=getTotal(receiptItems);
+    let receiptText=getString(receipt);
+    console.log(receiptText);
+}
+
 let buildItem = (inputs) => {
     let allItems = loadAllItems();
     let cartItems = [];
