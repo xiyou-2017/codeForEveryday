@@ -39,3 +39,15 @@ let getTotal = (receiptItems) => {
     });
     return receipt;
 }
+
+let getTime = () => {
+    let currentDate = new Date();
+    let year = currentDate.getFullYear().toString();
+    let month = (currentDate.getMonth() + 1).toString();
+    let date = currentDate.getDate().toString();
+    let hour = currentDate.getHours().toString();
+    let minute = currentDate.getMinutes().toString();
+    let second = currentDate.getSeconds().toString();
+    let dateTimeString=year + '年' + month + '月' + date + '日 ' + hour + ':' + minute + ':' + second;
+    return dateTimeString;
+}

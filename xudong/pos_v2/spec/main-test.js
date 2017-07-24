@@ -217,4 +217,17 @@ describe('unit', () => {
             expect(getTotal(inputs)).toEqual(testData);
         });
     });
+    describe('getTime', () => {
+        let currentDate = new Date(),
+            year = currentDate.getFullYear().toString(),
+            month = (currentDate.getMonth() + 1).toString(),
+            date = currentDate.getDate().toString(),
+            hour = currentDate.getHours().toString(),
+            minute = currentDate.getMinutes().toString(),
+            second = currentDate.getSeconds().toString(),
+            formattedDateString = year + '年' + month + '月' + date + '日 ' + hour + ':' + minute + ':' + second;
+        it('test_4', () => {
+            expect(getTime()).toEqual(formattedDateString);
+        });
+    });
 });
