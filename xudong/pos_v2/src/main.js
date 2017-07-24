@@ -50,4 +50,5 @@ let getTime = () => {
     let second = currentDate.getSeconds().toString();
     let dateTimeString=year + '年' + month + '月' + date + '日 ' + hour + ':' + minute + ':' + second;
     return dateTimeString;
+    //getTime
 }
