@@ -48,7 +48,23 @@ let getTime = () => {
     let hour = currentDate.getHours().toString();
     let minute = currentDate.getMinutes().toString();
     let second = currentDate.getSeconds().toString();
-    let dateTimeString=year + '年' + month + '月' + date + '日 ' + hour + ':' + minute + ':' + second;
+    let dateTimeString = year + '年' + month + '月' + date + '日 ' + hour + ':' + minute + ':' + second;
     return dateTimeString;
     //getTime
+}
+
+let getString = (receipt) => {
+    let receiptString = "***<没钱赚商店>收据***\n";
+    receiptString += '打印时间：'+getTime();
+    for (let itemArray of receipt) {
+        receiptString += '\n名称：' + itemArray.receiptItem.cartItem.item.name + '，数量：'
+            + itemArray.receiptItem.cartItem.count + itemArray.receiptItem.cartItem.item.unit + '，单价：'
+            + itemArray.receiptItem.cartItem.item.price.toFixed(2) + '(元)，小计：'
+            + itemArray.receiptItem.subtotal.toFixed(2) + '(元)';
+    }
+    receiptString += '\n----------------------' +
+        '\n总计：' + receipt[0].total.toFixed(2) + '(元)' +
+        '\n节省：' + receipt[0].allsave.toFixed(2) + '(元)' +
+        '\n**********************';
+    return receiptString;
 }
