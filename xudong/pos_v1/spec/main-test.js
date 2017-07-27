@@ -1,12 +1,14 @@
-'yse strict'
-describe('unit-test', () => {
-    describe('buildItem', () => {
-        let inputs = ['ITEM000000',
+'use strict'
+
+describe('unit', () => {
+    describe('BuildItem', () => {
+        let inputs = [
             'ITEM000000',
             'ITEM000000',
-            'ITEM000002',
-            'ITEM000002',
-            'ITEM000003-4',
+            'ITEM000000',
+            'ITEM000001',
+            'ITEM000001',
+            'ITEM000003-3'
         ];
         let testData = [
             {
@@ -16,14 +18,14 @@ describe('unit-test', () => {
                     unit: '瓶',
                     price: 3.00
                 },
-                count: 3,
+                count: 3
             },
             {
                 item: {
-                    barcode: 'ITEM000002',
-                    name: '苹果',
-                    unit: '斤',
-                    price: 5.50
+                    barcode: 'ITEM000001',
+                    name: '雪碧',
+                    unit: '瓶',
+                    price: 3.00
                 },
                 count: 2
             },
@@ -34,12 +36,11 @@ describe('unit-test', () => {
                     unit: '斤',
                     price: 15.00
                 },
-                count: 4
+                count: 3
             }
-
-        ]
-        it('test-1', () => {
+        ];
+        it('test_1',()=>{
             expect(buildItem(inputs)).toEqual(testData);
         });
-    });
-})
+    })
+});

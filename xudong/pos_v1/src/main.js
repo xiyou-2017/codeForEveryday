@@ -1,18 +1,16 @@
-'use strict';
-
-let buildItem = (inputs) => {
-    let allItems = loadAllItems();
-    let cartItems = [];
-    for (let barcode of inputs) {
-        let splitInput = barcode.split('-');
-        let itemCount = parseFloat(splitInput[1] || 1);
-        let cartItem = cartItems.find((cartItem) => cartItem.item.barcode === splitInput[0]);
-        if (cartItem) {
-            cartItem.count += itemCount;
+let buildItem=(inputs)=>{
+    let allItem=loadAllItems();
+    let cartItems=[];
+    for(let barcode of inputs){
+        let splitinputs=barcode.split('-');
+        let countItem=parseFloat(splitinputs[1] || 1);
+        let cartItem=cartItems.find((cartitem)=>cartitem.item.barcode===splitinputs[0]);
+        if(cartItem){
+            cartItem.count+=countItem;
         }
         else {
-            let item = allItems.find((item) => item.barcode === splitInput[0]);
-            cartItems.push({item: item, count: itemCount});
+            let item=allItem.find((item)=>item.barcode===splitinputs[0]);
+            cartItems.push({item:item,count:countItem});
         }
     }
     return cartItems;
